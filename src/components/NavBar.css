@@ -1,0 +1,42 @@
+/* src/components/Navbar.css */
+.navbar-custom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center; /* Align logo and name vertically */
+    flex: 1;
+  }
+  
+  .navbar-logo {
+    width: 40px;  /* Set the width of the logo */
+    height: auto;  /* Maintain the aspect ratio */
+    margin-right: 10px;  /* Space between logo and name */
+  }
+  
+  .company-name {
+    font-size: 24px; /* Font size for the company name */
+    font-weight: bold; /* Make the company name bold */
+  }
+  
+  .navbar-center {
+    display: flex;
+    justify-content: center;
+    flex: 2;
+  }
+  
+  .navbar-right {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    text-align: right;
+  }
+  
+  .navbar .nav-link {
+    margin-left: 10px;
+  }
+  
