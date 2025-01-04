@@ -1,25 +1,39 @@
-// src/pages/Gallery.jsx
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import React from 'react';
+import './Gallery.css';
 
-const Gallery = () => {
-  return (
-    <Container>
-      <h1 className="text-center my-4">Gallery</h1>
-      <Row>
-        <Col md={4} className="mb-4">
-          <Card>
-            <Card.Img variant="top" src="https://via.placeholder.com/300" />
-            <Card.Body>
-              <Card.Title>Artwork Title</Card.Title>
-              <Card.Text>Some description of the artwork.</Card.Text>
-              <Button variant="primary">View Details</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        {/* Repeat similar <Col> blocks for other artworks */}
-      </Row>
-    </Container>
-  );
-};
+const artworks = [
+  { id: 1, title: 'Artwork 1', image: 'https://via.placeholder.com/300x300', price: '$200' },
+  { id: 2, title: 'Artwork 2', image: 'https://via.placeholder.com/300x300', price: '$150' },
+  { id: 3, title: 'Artwork 3', image: 'https://via.placeholder.com/300x300', price: 'Request Price' },
+  { id: 4, title: 'Artwork 4', image: 'https://via.placeholder.com/300x300', price: '$200' },
+  { id: 5, title: 'Artwork 5', image: 'https://via.placeholder.com/300x300', price: '$150' },
+  { id: 6, title: 'Artwork 6', image: 'https://via.placeholder.com/300x300', price: 'Request Price' },
+];
+
+const Gallery = ({ addToCart }) => {
+    return (
+      <div className="gallery-grid">
+        {artworks.map((artwork) => (
+          <div key={artwork.id} className="gallery-card">
+            <img src={artwork.image} alt={artwork.title} className="gallery-card-image" />
+            <div className="gallery-card-body">
+              <h5 className="gallery-card-title">{artwork.title}</h5>
+              <p className="gallery-card-artist">by {artwork.artist}</p>
+              {artwork.price === 'Request Price' ? (
+                <button className="btn btn-secondary">Request Price</button>
+              ) : (
+                <button
+                  className="btn btn-primary"
+                  onClick={() => addToCart({ ...artwork, quantity: 1 })}
+                >
+                  Add to Cart
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
 
 export default Gallery;
