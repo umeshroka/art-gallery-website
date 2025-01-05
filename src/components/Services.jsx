@@ -1,61 +1,75 @@
 import React from 'react';
-import './Services.css';
+import { Link } from 'react-router-dom';
 
-const services = [
-  {
-    id: 1,
-    title: 'Custom Framing',
-    description: 'Professional framing services for your precious artwork.',
-    image: 'https://via.placeholder.com/400x300',
-    price: '$50',
-  },
-  {
-    id: 2,
-    title: 'Art Restoration',
-    description: 'Restore and preserve your valuable art pieces.',
-    image: 'https://via.placeholder.com/400x300',
-    price: '$150',
-  },
-  {
-    id: 3,
-    title: 'Art Consultancy',
-    description: 'Expert advice on curating and managing your art collection.',
-    image: 'https://via.placeholder.com/400x300',
-    price: '$100',
-  },
-  {
-    id: 4,
-    title: 'Gallery Installation',
-    description: 'Seamless installation of artworks in galleries and homes.',
-    image: 'https://via.placeholder.com/400x300',
-    price: '$200',
-  },
-];
+const Services = ({ cart, setCart }) => {
+  const services = [
+    {
+      id: 1,
+      title: 'Art Consultation',
+      description: 'Our expert consultants will help you choose the perfect art for your space.',
+      price: '$200',
+      image: 'https://via.placeholder.com/150',
+    },
+    {
+      id: 2,
+      title: 'Framing Services',
+      description: 'We offer professional framing services to protect and display your art beautifully.',
+      price: '$100',
+      image: 'https://via.placeholder.com/150',
+    },
+    {
+      id: 3,
+      title: 'Art Installation',
+      description: 'We will professionally install your artwork in your home or office.',
+      price: '$150',
+      image: 'https://via.placeholder.com/150',
+    },
+    {
+      id: 4,
+      title: 'Art Restoration',
+      description: 'We offer expert restoration services to bring your damaged art back to life.',
+      price: '$300',
+      image: 'https://via.placeholder.com/150',
+    },
+  ];
 
-const Services = ({ addToCart }) => {
+  const addToCart = (item) => {
+    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+    if (existingItem) {
+      setCart(cart.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      ));
+    } else {
+      setCart([...cart, { ...item, quantity: 1 }]);
+    }
+  };
+
   return (
-    <div className="services-container">
-      {services.map((service, index) => (
-        <div
-          key={service.id}
-          className={`service-row ${index % 2 === 0 ? 'image-left' : 'image-right'}`}
-        >
-          <img src={service.image} alt={service.title} className="service-image" />
-          <div className="service-description">
-            <h2>{service.title}</h2>
-            <p>{service.description}</p>
-            <p className="service-price">{service.price}</p>
-            <button
-              className="btn btn-primary"
-              onClick={() =>
-                addToCart({ id: service.id, title: service.title, price: service.price, quantity: 1 })
-              }
-            >
-              Add to Cart
-            </button>
+    <div className="services">
+      <h2>Our Services</h2>
+      <div className="service-list">
+        {services.map((service, index) => (
+          <div
+            key={service.id}
+            className={`service-item ${index % 2 === 0 ? 'left' : 'right'}`}
+          >
+            <div className="service-description">
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <p>{service.price}</p>
+              <button onClick={() => addToCart(service)}>Add to Cart</button>
+              <Link to="/enquiry">
+                <button>Enquire for Price</button>
+              </Link>
+            </div>
+            <div className="service-image">
+              <img src={service.image} alt={service.title} />
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

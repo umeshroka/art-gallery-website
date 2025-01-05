@@ -1,41 +1,44 @@
-import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import "./App.css";
-import NavigationBar from "./components/NavBar";
-import Gallery from "./components/Gallery";
-import Services from "./components/Services";
-import AboutUs from "./components/AboutUs";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AboutUs from "./components/Aboutus";
 import Cart from "./components/Cart";
+import Gallery from "./components/Gallery";
+import Home from "./components/Home";
+import Navbar from "./components/NavBar";
+import PriceEnquiryForm from "./components/PriceEnquiryForm";
+import Services from "./components/Services";
 
-function App() {
+const App = () => {
   const [cart, setCart] = useState([]);
+  const [enquiryDetails, setEnquiryDetails] = useState(null);
 
-  const addToCart = (item) => {
-    setCart((prevCart) => [...prevCart, item]);
-  };
-
-  const removeFromCart = (itemId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
-  };
-
-  const clearCart = () => {
-    setCart([]);
+  const handleEnquirySubmit = (data) => {
+    setEnquiryDetails(data);
+    alert("Thank you for your enquiry. We will contact you soon!");
   };
 
   return (
     <>
-      <NavigationBar cartCount={cart.length}/>
+      <Navbar cart={cart} />
       <Routes>
-        <Route path="/gallery" element={<Gallery addToCart={addToCart}/>} />
-        <Route path="/services" element={<Services addToCart={addToCart}/>} />
-        <Route path="/about" element={<AboutUs />} />
+        <Route path="/" element={<Home />} />
         <Route
-          path="/cart"
-          element={<Cart cart={cart} removeFromCart={removeFromCart} clearCart={clearCart} />}
+          path="/gallery"
+          element={<Gallery cart={cart} setCart={setCart} />}
+        />
+        <Route
+          path="/services"
+          element={<Services cart={cart} setCart={setCart} />}
+        />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
+        <Route
+          path="/enquiry"
+          element={<PriceEnquiryForm onSubmit={handleEnquirySubmit} />}
         />
       </Routes>
     </>
   );
-}
+};
 
 export default App;

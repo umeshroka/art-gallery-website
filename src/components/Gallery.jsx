@@ -1,39 +1,48 @@
 import React from 'react';
-import './Gallery.css';
+import { Link } from 'react-router-dom';
 
-const artworks = [
-  { id: 1, title: 'Artwork 1', image: 'https://via.placeholder.com/300x300', price: '$200' },
-  { id: 2, title: 'Artwork 2', image: 'https://via.placeholder.com/300x300', price: '$150' },
-  { id: 3, title: 'Artwork 3', image: 'https://via.placeholder.com/300x300', price: 'Request Price' },
-  { id: 4, title: 'Artwork 4', image: 'https://via.placeholder.com/300x300', price: '$200' },
-  { id: 5, title: 'Artwork 5', image: 'https://via.placeholder.com/300x300', price: '$150' },
-  { id: 6, title: 'Artwork 6', image: 'https://via.placeholder.com/300x300', price: 'Request Price' },
-];
+const Gallery = ({ cart, setCart }) => {
+  const artworks = [
+    { id: 1, title: 'Mona Lisa', artist: 'Leonardo da Vinci', price: '$500', image: 'https://via.placeholder.com/50' },
+    { id: 2, title: 'Starry Night', artist: 'Vincent van Gogh', price: '$600', image: 'https://via.placeholder.com/50' },
+    { id: 3, title: 'The Persistence of Memory', artist: 'Salvador Dalí', price: '$700', image: 'https://via.placeholder.com/50' },
+    // More artworks...
+  ];
 
-const Gallery = ({ addToCart }) => {
-    return (
-      <div className="gallery-grid">
+  const addToCart = (item) => {
+    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+    if (existingItem) {
+      setCart(cart.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : cartItem
+      ));
+    } else {
+      setCart([...cart, { ...item, quantity: 1 }]);
+    }
+  };
+
+  return (
+    <div className="gallery">
+      <h2>Gallery</h2>
+      <div className="artworks">
         {artworks.map((artwork) => (
-          <div key={artwork.id} className="gallery-card">
-            <img src={artwork.image} alt={artwork.title} className="gallery-card-image" />
-            <div className="gallery-card-body">
-              <h5 className="gallery-card-title">{artwork.title}</h5>
-              <p className="gallery-card-artist">by {artwork.artist}</p>
-              {artwork.price === 'Request Price' ? (
-                <button className="btn btn-secondary">Request Price</button>
-              ) : (
-                <button
-                  className="btn btn-primary"
-                  onClick={() => addToCart({ ...artwork, quantity: 1 })}
-                >
-                  Add to Cart
-                </button>
-              )}
+          <div key={artwork.id} className="card">
+            <img src={artwork.image} alt={artwork.title} />
+            <div className="card-body">
+              <h5>{artwork.title}</h5>
+              <p>{artwork.artist}</p>
+              <p>{artwork.price}</p>
+              <button onClick={() => addToCart(artwork)}>Add to Cart</button>
+              <Link to="/enquiry">
+                <button>Enquire for Price</button>
+              </Link>
             </div>
           </div>
         ))}
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default Gallery;
