@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 import Cart from "./components/Cart";
 import Gallery from "./components/Gallery";
@@ -8,13 +7,22 @@ import Home from "./components/Home";
 import Navbar from "./components/NavBar";
 import PriceEnquiryForm from "./components/PriceEnquiryForm";
 import Services from "./components/Services";
+import { fetchArtworks } from "./services/services";
 
 const App = () => {
+  const [artworks, setArtworks] = useState([]);
   const [cart, setCart] = useState([]);
-  const [enquiryDetails, setEnquiryDetails] = useState(null);
+
+  useEffect(() => {
+    const getArtworks = async () => {
+      const fetchedArtworks = await fetchArtworks();
+      setArtworks(fetchedArtworks);
+    };
+    getArtworks();
+  }, []);
 
   const handleEnquirySubmit = (data) => {
-    setEnquiryDetails(data);
+    console.log("Enquiry Submitted:", data);
     alert("Thank you for your enquiry. We will contact you soon!");
   };
 
@@ -25,7 +33,13 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route
           path="/gallery"
-          element={<Gallery cart={cart} setCart={setCart} />}
+          element={
+            <Gallery
+              cart={cart}
+              setCart={setCart}
+              artworks={artworks}
+            />
+          }
         />
         <Route
           path="/services"
@@ -38,7 +52,7 @@ const App = () => {
           element={<PriceEnquiryForm onSubmit={handleEnquirySubmit} />}
         />
       </Routes>
-    </>
+      </>
   );
 };
 

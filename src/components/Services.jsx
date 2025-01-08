@@ -6,26 +6,26 @@ const Services = ({ cart, setCart }) => {
     {
       id: 91,
       title: "Calligraphy Workshop",
-      description:
-        "Get started on your journey to learn calligraphy",
+      description: "Get started on your journey to learn calligraphy",
       price: "$399",
-      image: "https://cdn.pixabay.com/photo/2018/11/12/10/12/calligraphy-3810556_1280.jpg"
+      image:
+        "https://cdn.pixabay.com/photo/2018/11/12/10/12/calligraphy-3810556_1280.jpg",
     },
     {
       id: 92,
       title: "Commission a calligraphy art piece",
-      description:
-        "Tell us what your vision is",
+      description: "Tell us what your vision is",
       price: null,
-      image: "https://cdn.pixabay.com/photo/2017/10/24/12/23/calligraphy-brush-2884392_1280.jpg",
+      image:
+        "https://cdn.pixabay.com/photo/2017/10/24/12/23/calligraphy-brush-2884392_1280.jpg",
     },
     {
       id: 93,
       title: "Consultation: Authenticity & Appraisal services ",
-      description:
-        "Build your collection with confidence",
+      description: "Build your collection with confidence",
       price: null,
-      image: "https://cdn.pixabay.com/photo/2024/06/24/06/42/art-appraiser-8849270_1280.jpg",
+      image:
+        "https://cdn.pixabay.com/photo/2024/06/24/06/42/art-appraiser-8849270_1280.jpg",
     },
     {
       id: 94,
@@ -33,7 +33,8 @@ const Services = ({ cart, setCart }) => {
       description:
         "We offer expert restoration services to bring your damaged art back to life.",
       price: null,
-      image: "https://cdn.pixabay.com/photo/2017/07/26/18/01/china-2542574_1280.jpg",
+      image:
+        "https://cdn.pixabay.com/photo/2017/07/26/18/01/china-2542574_1280.jpg",
     },
   ];
 
@@ -59,30 +60,27 @@ const Services = ({ cart, setCart }) => {
         <div
           key={service.id}
           className={`card mb-5 shadow border-0 ${
-            index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+            index % 2 === 0 ? "flex-row" : "flex-row-reverse"
           } d-flex`}
-          style={{ overflow: 'hidden' }}
+          style={{ overflow: "hidden" }}
         >
-          {/* Image Section */}
           <div
             className="card-img"
             style={{
-              flex: '1 1 50%',
-              height: '300px',
+              flex: "1 1 50%",
+              height: "300px",
             }}
           >
             <img
               src={service.image}
               alt={service.title}
               className="img-fluid h-100 w-100"
-              style={{ width: '100px', height: '150px' , objectFit:"cover"}} 
+              style={{ objectFit: "cover" }}
             />
           </div>
-
-          {/* Description Section */}
           <div
             className="card-body d-flex flex-column justify-content-center"
-            style={{ flex: '1 1 50%', padding: '20px' }}
+            style={{ flex: "1 1 50%", padding: "20px" }}
           >
             <h3>{service.title}</h3>
             <p>{service.description}</p>
@@ -97,8 +95,12 @@ const Services = ({ cart, setCart }) => {
                 </button>
               </>
             ) : (
-              <Link to="/enquiry">
-                <button className="btn btn-secondary">Enquire for Price</button>
+              <Link
+                to="/enquiry"
+                state={{ item: service }}
+                className="btn btn-secondary"
+              >
+                Enquire for Price
               </Link>
             )}
           </div>

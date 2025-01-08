@@ -12,7 +12,8 @@ It will have 2 main sections:
 
 # Link to deployed site
 
-[Art Gallery Website](art-gallery-website-sandy.vercel.app)
+[Art Gallery Website](art-gallery-website-rose.vercel.app)
+)
 
 # MVP
 
