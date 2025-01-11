@@ -1,6 +1,6 @@
 # Art Gallery Website
 
-Placeholder for app screenshot
+(src/assets/App screenshot)
 
 # Description
 
@@ -9,19 +9,18 @@ It will have 2 main sections:
 1. A gallery to view/buy art pieces 
 2. Services offering: calligraphy workshops, authenticity & apprasial services, commissoning a calligraphy art piece, art repair/restoration
 
-
 # Link to deployed site
 
 [Art Gallery Website](art-gallery-website-rose.vercel.app)
-)
 
 # MVP
 
-- A banner with company logo, account login, shopping cart with linksbe a search) (may
+- A banner with company logo, shopping cart with links
 - A navbar with gallery, services and about us with links 
 - A carousel with art pieces rotating 
-- A 4x4 grid with services 
-- A footer
+- A gallery with artworks
+- A services page
+- Shopping cart
 
 # Planning materials 
 
@@ -33,13 +32,10 @@ It will have 2 main sections:
 
 Placeholder for wireframe
 
-## model / state
-
-    
 # Attributions
 
 - Style Framework: [React Bootstrap](https://react-bootstrap.netlify.app)
-- Stack Overflow, w3 schools, MDN
+- Stack Overflow, w3 schools, MDN, Pixabay
 - ChatGPT
 
 # Technologies Used
