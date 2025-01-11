@@ -16,7 +16,7 @@ export const fetchArtworks = async () => {
         id: index + 1,
         title: artwork.title,
         artist: artwork.people ? artwork.people[0].name : 'Unknown Artist',
-        price: artwork.price || null, // Assuming price is available in the API (if not, it'll show null)
+        price: null, 
         image: artwork.primaryimageurl,
       }));
   
