@@ -2,7 +2,7 @@
 
 export const fetchArtworks = async () => {
     const apiKey = import.meta.env.VITE_HARVARD_API_KEY;
-    const url = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&culture=Chinese&size=50&page=1&classification=Calligraphy&sort=rank&sortorder=desc`;
+    const url = `https://api.harvardartmuseums.org/object?apikey=${apiKey}&culture=Chinese&size=25&page=1&classification=Calligraphy&sort=rank&sortorder=desc`;
   
     try {
       const response = await fetch(url);

@@ -23,7 +23,6 @@ const App = () => {
 
   const handleEnquirySubmit = (data) => {
     console.log("Enquiry Submitted:", data);
-    alert("Thank you for your enquiry. We will contact you soon!");
   };
 
   return (
