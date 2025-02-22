@@ -10,7 +10,7 @@ const Navbar = ({ cart }) => {
         {/* Left Side: Logo and Art Gallery Name */}
         <a className="navbar-brand d-flex align-items-center" href="/">
           <img
-            src="src/assets/Art gallery picture.png" 
+            src="public/Art gallery picture.png" 
             alt="Logo"
             className="logo"
             style={{ width: '50px', height: '50px', objectFit: 'cover' }}
