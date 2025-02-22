@@ -21,6 +21,8 @@ const App = () => {
     getArtworks();
   }, []);
 
+  console.log(artworks)
+  
   const handleEnquirySubmit = (data) => {
     console.log("Enquiry Submitted:", data);
   };

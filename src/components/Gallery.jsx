@@ -28,7 +28,7 @@ const Gallery = ({ cart, setCart, artworks }) => {
                 src={artwork.image}
                 alt={artwork.title}
                 className="card-img-top"
-                style={{ height: "200px", objectFit: "cover" }}
+                style={{ width: "200px", height: "200px", objectFit: "cover" }}
               />
               <div className="card-body">
                 <h5 className="card-title">{artwork.title}</h5>
