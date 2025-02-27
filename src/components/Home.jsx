@@ -9,7 +9,7 @@ const Home = () => {
       <div id="homeCarousel" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
           {/* Slide 1 - Gallery */}
-          <div className="carousel-item active" data-bs-interval="4000">
+          <div className="carousel-item active" data-bs-interval="3000">
             <img
               src="https://cdn.pixabay.com/photo/2014/07/21/17/52/museum-398761_1280.jpg"
               className="d-block w-100"
@@ -25,7 +25,7 @@ const Home = () => {
             </div>
           </div>
           {/* Slide 2 - Services */}
-          <div className="carousel-item" data-bs-interval="4000">
+          <div className="carousel-item" data-bs-interval="3000">
             <img
               src="https://cdn.pixabay.com/photo/2019/07/27/17/32/calligraphy-4367228_1280.jpg"
               className="d-block w-100"

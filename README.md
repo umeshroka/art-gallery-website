@@ -9,7 +9,7 @@ It will have 2 main sections:
 
 # Link to deployed site
 
-
+<art-gallery-website-rose.vercel.app>
 
 # MVP
 
@@ -48,11 +48,41 @@ HTML + CSS + Javascript + React
 
 ## Favorite code
 
+```
+              <div className="card-body">
+                <h5 className="card-title">{artwork.title}</h5>
+                <p className="card-text">Artist: {artwork.artist}</p>
+                {artwork.price ? (
+                  <>
+                    <p className="card-text">Price: {artwork.price}</p>
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={() => addToCart(artwork)}
+                    >
+                      Add to Cart
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <p className="card-text">Price upon enquiry</p>
+                    <Link
+                      to="/enquiry"
+                      state={{ item: artwork }}
+                      className="btn btn-secondary w-100"
+                    >
+                      Enquire for Price
+                    </Link>
+                  </>
+                )}
+              </div>
 
+```
+
+Ternary to conditionally render an add to cart button or enquire for price button based on whether the artwork has a price
 
 ## Can do better
 
-
+Currently, the services and the artworks can be added to the cart uniquely and separately but that is because I have given the services id starting from 90 and the artworks id starting from 1. Hence, they appear to the separate. But in actuality, there should not be sharing the same id sequence and should have their own unqiue id sequence and unique categories. 
 
 
 
