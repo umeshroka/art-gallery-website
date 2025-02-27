@@ -1,5 +1,7 @@
 # Art Gallery Website
 
+<img alt="image" src="src/assets/Screenshot.png">
+
 # Description
 
 This is an ecommerce website for an art gallery. 
@@ -9,7 +11,7 @@ It will have 2 main sections:
 
 # Link to deployed site
 
-<art-gallery-website-rose.vercel.app>
+[Live Site](art-gallery-website-rose.vercel.app)
 
 # MVP
 
